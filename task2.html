@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     .test{
+       background-color: aqua;
+       text-align: center;
+     
+     }
+     body {
+      background-color: white;
+      color: black;
+      transition: 0.3s;
+    }
+
+    .dark-mode {
+      background-color: black;
+      color: white;
+    }
+      .submenu {
+      display: none;
+      margin-left: 20px;
+    }
+</style>
+
+<body>
+    <p id="text1"> My name is Akanksha </p>
+     <button id="style1" onclick="display3()"> Get The Style </button>
+
+    <div id="bg"> 
+      <button onclick="myfun()"> Click Me </button>
+
+    </div>
+
+    <button id="see1" onclick="visible1()"> Click To SEE The Content </button>
+
+    <div id="visi" style="visibility: hidden;" >
+      <p>  We are In Park....  </p>
+    </div>
+    <label> Enter the Items in Table </label>
+    <input type="text" id="item">
+    <button id="additems" onclick="display()"> Add Table Items </button>
+    <table id="result"> </table>
+    <label> Enter the Items in List </label>
+    <input type="text" id="item2">
+    <button id="itemss" onclick="display1()"> Add List Items </button>
+    <ul id="list1"></ul>
+
+    <p id="text2"> This is text to get removed by remove method </p>
+     <button id="remove1" onclick="document.getElementById('text2').remove()"> Remove Text </button>
+
+      <br><br>
+
+     <input type="text" id="value11" placeholder="Enter the value in placeholder">
+
+     <button onclick="showvalue()"> Show the value </button>
+     <div id="value22"> </div>
+     <br> <br>
+     <h1 id="header"> Hello World</h1>
+     <button onclick="incre()"> INCREASE THE FONT </button>
+     <button onclick="decre()"> DECREASE THE FONT</button>
+     <br><br>
+
+     <textarea  id="area11"></textarea>
+     <p id="count11"> </p>
+
+     <h3> TO DO LIST </h3> 
+     <label > Enter you Task</label>
+     <input type="text" id="task1" placeholder="Enter you task here">
+     <button onclick="addtask()"> ADD TASK </button>
+    <table id="task11">  </table>
+    <br>
+    <div id="gallery">
+      <img id="img1" src="task1/cat1.jpg" alt="">
+      <div id="buttons">
+        <button id="pre1"> Previous </button>
+        <button id="next2"> Next </button>
+      </div>
+
+    </div>
+    <br>
+    <h2>Dynamic Table</h2>
+    <input type="text" id="name1" placeholder="Enter name">
+    <button onclick="addRow()">Add Row</button>
+    <table id="dyna">
+      <tr>
+        <th>Name </th>
+        <th> Action </th>
+      </tr>
+    </table>
+    <br>
+    <button onclick="toggle()">Toggle Dark Mode</button>
+    <br> 
+    <input type="text" id="searchBox" onkeyup="search()" placeholder="Type to search...">
+
+      <ul id="myList">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Mango</li>
+        <li>Orange</li>
+      </ul>
+      <br>
+      <h3 id="menu" onclick="toggle2()">MENU </h3>
+      <ul id="submenu">
+      <li>Option 1</li>
+      <li>Option 2</li>
+      <li>Option 3</li>
+    </ul> <br>
+    <form >
+      <label> Name</label>
+      <input type="text" id="require">
+       <button onclick="sub()">Submit</button>
+      <p id="para11"></p>
+    </form> <br>
+    <h2>Click a fruit:</h2>
+    <ul id="fru">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Mango</li>
+    <li>Orange</li>
+  </ul>
+  <p id="mess"></p>
+
+
+    
+    
+</body>
+<script>
+    
+    function myfun()
+    {
+      let p=document.querySelector("#bg");
+      p.style.backgroundColor="red";
+    }
+
+    function visible1()
+    {
+        let j=document.querySelector("#visi");
+        j.style.visibility="visible";
+    }
+
+    function display()
+    {
+       
+       let row=document.createElement("tr");
+       let cell=document.createElement("td");
+       cell.textContent=document.querySelector("#item").value;
+       row.append(cell);
+       document.querySelector("#result").append(row);
+       }
+       
+
+
+    function display1(){
+      let a=document.createElement("li");
+       a.textContent=document.getElementById("item2").value;
+       document.getElementById("list1").append(a);
+      }
+
+      function display3()
+      {
+         document.getElementById("text1").style=test;
+      }
+
+      function showvalue()
+      {
+         let v=document.querySelector("#value11");
+        let d=document.querySelector("#value22");
+         d.textContent=v.value;
+         v.value=" ";
+      }
+
+      function incre()
+      {
+         let h=document.querySelector("#header");
+         let current=parseFloat(window.getComputedStyle(h).fontSize);
+         h.style.fontSize=(current+2)+"px";
+      }
+
+      function decre()
+      {
+        let h=document.querySelector("#header");
+        let current=parseFloat(window.getComputedStyle(h).fontSize);
+        h.style.fontSize=(current-2)+"px";
+      }
+
+      document.querySelector("#area11").addEventListener("input", function() {
+        let count = this.value.length;
+        document.querySelector("#count11").textContent = "Character Count: " + count;
+      });
+
+      function addtask()
+      {
+         let a= document.querySelector("#task1");
+         let row=document.createElement("tr");
+         let cell=document.createElement("td");
+         let cell1=document.createElement("td");
+         cell.textContent=a.value;
+         let button1=document.createElement("button")
+         button1.textContent="Delete";
+         button1.style.fontSize="18px";
+         //button1.style.padding = "10px 20px";
+         cell1.appendChild(button1);
+         row.append(cell);
+         row.append(cell1);
+         document.querySelector("#task11").append(row);
+         button1.addEventListener("click",function()
+        {
+            row.remove();
+        });
+      }
+
+      let image1=document.querySelector("#img1");
+      let pre=document.querySelector("#pre1");
+      let next=document.querySelector("#next2");
+
+      let imagess=["task1/cat1.jpg","task1/peacock.jpg","task1/fish.jpg"];
+
+      let current1=0;
+      image1.src=imagess[current1];
+      pre.addEventListener("click",function()
+    { 
+       if(current1===0)
+       {
+           current1=imagess.length-1;
+       }
+       else{
+         current1=current1-1;
+       }
+       image1.src=imagess[current1];
+
+    });
+
+    next.addEventListener("click",function()
+  {
+       if(current1===imagess.length-1)
+       {
+            current1=0;
+       }
+       else{
+        current1=current1+1;
+       }
+       image1.src=imagess[current1];
+  });
+
+  function addRow()
+  {
+     let n=document.querySelector("#name1");
+     let t=document.querySelector("#dyna");
+
+        
+        let row1=t.insertRow();
+        let cell1=row1.insertCell(0);
+        let cell2=row1.insertCell(1);
+
+        cell1.textContent=n.value;
+
+        let dele=document.createElement("button");
+        dele.textContent="Delete";
+        dele.addEventListener("click",function()
+      {
+        t.deleteRow(row1.rowIndex);
+
+      });
+              cell2.appendChild(dele);
+
+  }
+
+  function toggle()
+  {
+    document.body.classList.toggle("dark-mode");
+  }
+
+  function search() {
+  let input = document.getElementById("searchBox").value.toLowerCase();
+  let items = document.querySelectorAll("#myList li");
+
+  items.forEach(function(item) {
+    let text = item.textContent.toLowerCase();
+    if (text.includes(input)) {
+      item.style.display = "";   // show
+    } else {
+      item.style.display = "none";  // hide
+    }
+  });
+}
+
+function toggle2()
+{
+    let menu = document.getElementById("submenu");
+    menu.classList.toggle("submenu");
+}
+
+function sub()
+{
+  let n1=document.querySelector("#require").value.trim();  
+  let p=document.querySelector("#para11");
+  if(n1==="")
+{
+  p.textContent="Fill out the field,it is mandatory"
+}
+}
+
+let list=document.querySelector("#fru");
+let mess1=document.querySelector("#mess");
+
+list.addEventListener("click",function(e)
+{
+  if(e.target.tagName==="LI")
+{
+  mess.textContent="U have clicked on"+e.target.textContent;
+}
+});
+
+
+
+
+      
+
+      
+
+</script>
+</html>
