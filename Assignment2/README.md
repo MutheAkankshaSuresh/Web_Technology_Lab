@@ -1,1 +1,1 @@
-DEPLOY LINK -  https://mutheakankshasuresh.github.io/sample2/
+DEPLOY LINK -  https://mutheakankshasuresh.github.io/Web_Technology_Lab/Assignment2/
