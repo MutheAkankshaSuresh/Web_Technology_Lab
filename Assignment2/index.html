@@ -114,6 +114,10 @@
     .btn.delete:hover {
       background-color: #e53e3e;
     }
+
+    .btn.edit{
+      background-color: #5a67d8;
+    }
   </style>
 </head>
 <body>
@@ -147,15 +151,20 @@
     actions.className = "actions";
 
     const doneBtn = document.createElement("button");
-    doneBtn.textContent = "✓";
+    doneBtn.textContent = "Task Done";
     doneBtn.className = "btn done";
 
     const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "🗑";
+    deleteBtn.textContent = "delete";
     deleteBtn.className = "btn delete";
+
+    const EditBtn = document.createElement("button");
+    EditBtn.textContent = "Edit Task";
+    EditBtn.className = "btn edit";
 
     actions.appendChild(doneBtn);
     actions.appendChild(deleteBtn);
+    actions.appendChild(EditBtn);
 
     li.appendChild(span);
     li.appendChild(actions);
@@ -172,9 +181,21 @@
     deleteBtn.addEventListener("click", () => {
       taskList.removeChild(li);
     });
+
+    EditBtn.addEventListener("click",(e) =>{
+
+    let text = e.target.closest("li").querySelector("span");
+     //get the task in span element
+     let update=prompt("Edit your Task",text.textContent);      //ask user to create new task
+     if(update)
+     {
+        text.textContent= update;      //replace 
+     }
+
+       
+    });
   }
 </script>
 
 </body>
 </html>
-
